@@ -139,6 +139,9 @@ def render_upload(state: StateManager):
             use_container_width=True,
             disabled=not can_proceed,
         ):
+            if not data_result:
+                st.warning("Please provide data before continuing.")
+                st.stop()
             state.update_sample_data(**data_result)
             # Reset generated posts when data changes
             state.set("posts_generated", False)
