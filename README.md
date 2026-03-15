@@ -53,7 +53,7 @@ social-media-generator/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/social-media-generator
+git clone https://github.com/cyycan/social_media_generator_multi_agents.git
 cd social-media-generator
 ```
 
