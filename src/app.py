@@ -108,35 +108,40 @@ def render_stepper(state: StateManager):
         else:
             status, icon = "pending", str(i + 1)
 
+        circle_styles = {
+            "active":  "background:#6366f1;color:white;box-shadow:0 0 0 4px rgba(99,102,241,0.2);",
+            "done":    "background:#10b981;color:white;",
+            "pending": "background:#e2e8f0;color:#94a3b8;",
+        }
+        label_colors = {"active": "#6366f1", "done": "#10b981", "pending": "#94a3b8"}
+
         parts.append(
-            f'<div class="step-item">'
-            f'  <div class="step-circle {status}">{icon}</div>'
-            f'  <div class="step-label {status}">{step["label"]}</div>'
-            f"</div>"
+            f'<div style="display:flex;flex-direction:column;align-items:center;flex:1;position:relative;">'
+            f'  <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;'
+            f'justify-content:center;font-weight:700;font-size:0.9rem;transition:all 0.3s ease;'
+            f'{circle_styles[status]}">{icon}</div>'
+            f'  <div style="font-size:0.75rem;font-weight:500;margin-top:0.4rem;text-align:center;'
+            f'width:90px;color:{label_colors[status]};">{step["label"]}</div>'
+            f'</div>'
         )
         if i < len(STEPS) - 1:
             conn = "done" if i < current else "pending"
-            parts.append(f'<div class="step-connector {conn}"></div>')
+            conn_color = "#10b981" if conn == "done" else "#e2e8f0"
+            parts.append(
+                f'<div style="height:2px;flex:1;max-width:80px;margin-bottom:1.2rem;'
+                f'border-radius:2px;background:{conn_color};"></div>'
+            )
 
     st.markdown(
-        '<div class="stepper-container">' + "".join(parts) + "</div>",
+        '<div style="display:flex;align-items:center;justify-content:center;'
+        'margin-bottom:2.5rem;padding:1.25rem 2rem;background:#f8fafc;'
+        'border-radius:12px;border:1px solid #e2e8f0;">'
+        + "".join(parts)
+        + "</div>",
         unsafe_allow_html=True,
     )
 
-    # Clickable "jump back" buttons rendered below stepper as compact tabs
-    if current > 0:
-        cols = st.columns(len(STEPS))
-        for i, step in enumerate(STEPS):
-            with cols[i]:
-                if i < current:
-                    if st.button(
-                        f"← {step['label']}",
-                        key=f"nav_back_{i}",
-                        use_container_width=True,
-                        help=f"Go back to {step['label']}",
-                    ):
-                        state.go_to(i)
-        st.markdown("")   # spacing
+
 
 
 def main():
