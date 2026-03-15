@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # social_media_generator_multi_agents
 =======
 # 📣 Social Media Generator
