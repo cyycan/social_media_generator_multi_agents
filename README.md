@@ -1,5 +1,3 @@
-# social_media_generator_multi_agents
-=======
 # 📣 Social Media Generator
 
 An AI-powered, step-by-step social media content generator built with **LangChain**, **Streamlit**, and a clean wizard-style UI inspired by professional agentic apps.
