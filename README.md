@@ -164,22 +164,6 @@ OPENAI_API_KEY = "sk-..."
 
 ---
 
-## 🔌 Adding Real Platform Publishing
-
-### Twitter/X
-1. Create a developer app at [developer.twitter.com](https://developer.twitter.com)
-2. Enable Read + Write permissions
-3. Generate OAuth 1.0a tokens
-4. Enter them in the **Live API** credentials panel in Step 4
-
-### LinkedIn
-1. Create an app at [linkedin.com/developers](https://www.linkedin.com/developers)
-2. Request `w_member_social` permission
-3. Generate an OAuth 2.0 access token
-4. Find your `author_urn` from the LinkedIn API `/v2/me` endpoint
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
@@ -193,8 +177,3 @@ OPENAI_API_KEY = "sk-..."
 | Logging | Python `logging` |
 
 ---
-
-## 📄 License
-
-MIT
->>>>>>> d134528 (modified version from single agent to multi agent. See SocialMediaGeneratorRepo for more details)
